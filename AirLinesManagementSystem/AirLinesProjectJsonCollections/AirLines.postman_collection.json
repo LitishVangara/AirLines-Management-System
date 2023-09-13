@@ -1,0 +1,928 @@
+{
+	"info": {
+		"_postman_id": "82749b98-8562-439f-8008-a9fb1801ed75",
+		"name": "AirLines",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29378349"
+	},
+	"item": [
+		{
+			"name": "AddFlight",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"destination\" : \"New Delhi\",\r\n    \"flightDate\" : \"2023-09-20\",\r\n    \"flightTime\" : \"16:23\",\r\n    \"flightNumber\" : \"526483\",\r\n    \"currentLocation\" : \"Agra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a5/102/102/102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a5",
+						"102",
+						"102",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFlights",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"destination\" : \"New Delhi\",\r\n    \"flightDate\" : \"2023-09-11\",\r\n    \"flightTime\" : \"02:16\",\r\n    \"flightNumber\" : \"526799\",\r\n    \"currentLocation\" : \"Bhopal\",\r\n    \"fareDTO\" : {\r\n        \"currency\" : \"Rupees\",\r\n        \"amount\" : \"3800\"\r\n    },\r\n    \"flightInformationDTO\" : {\r\n        \"flightNumber\" : \"526799\",\r\n        \"flightType\" : \"Normal\",\r\n        \"airLinesDTO\" : {\r\n            \"airLinesName\" : \"Indigo\"\r\n        }\r\n    },\r\n    \"inventoryDTO\" : {\r\n        \"count\" : \"180\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFare",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currency\" : \"Rupees\",\r\n    \"amount\" : \"4500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddAirLines",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"airLinesName\" : \"AirIndia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFlightInformation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightNumber\" : \"526483\",\r\n    \"flightType\" : \"Normal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a3/102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a3",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddInventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"count\" : \"260\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPassengers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailAddress\" : \"krishna20\",\r\n    \"firstName\" : \"Krishna\",\r\n    \"lastName\" : \"Rama\",\r\n    \"mobileNumber\" : \"7642105683\",\r\n    \"gender\" : \"male\",\r\n    \"bookingInformationDTO\" : {\r\n        \"bookingDate\" : \"2023-08-29\",\r\n        \"destination\" : \"New Delhi\",\r\n        \"fare\" : \"4500\",\r\n        \"flightDate\" : \"2023-09-20\",\r\n        \"flightNumber\" : \"526483\",\r\n        \"status\" : \"OnTime\",\r\n        \"flightTime\" : \"16:23\",\r\n        \"currentCity\" : \"Agra\"\r\n    },\r\n    \"checkInDTO\" : {\r\n        \"seatNumber\" : \"10\",\r\n        \"gateNumber\" : \"17\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/passengers/p1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passengers",
+						"p1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddUserInformation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Krishna\",\r\n    \"lastName\" : \"Rama\",\r\n    \"mobileNumber\" : \"7562358620\",\r\n    \"gender\" : \"male\",\r\n    \"userName\" : \"Krishna20\",\r\n    \"password\" : \"7535@kr\",\r\n    \"confirmPassword\" : \"7535@kr\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/userInformation/u1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"userInformation",
+						"u1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAirLinesName",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a15/52/52/Indigo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a15",
+						"52",
+						"52",
+						"Indigo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateFlightNumber",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a16/153/526483",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a16",
+						"153",
+						"526483"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAirLines",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a17/252",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a17",
+						"252"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFlights",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a18/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a18",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUserInformation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a19/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a19",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePassengers",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a20/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a20",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindUserInformation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/userInformation/u2/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"userInformation",
+						"u2",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserLogin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/userInformation/u3/litish17/123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"userInformation",
+						"u3",
+						"litish17",
+						"123456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindBookingInformation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/passengers/p2/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passengers",
+						"p2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindPassenger",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/passengers/p3/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passengers",
+						"p3",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchFlights",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flights/f1/Agra/New Delhi/2023-09-20/16:23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flights",
+						"f1",
+						"Agra",
+						"New Delhi",
+						"2023-09-20",
+						"16:23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchFlight",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flights/f2/Emirates/238645/2023-09-02/21:56",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flights",
+						"f2",
+						"Emirates",
+						"238645",
+						"2023-09-02",
+						"21:56"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFlight",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a7/153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a7",
+						"153"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFlightInformation",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a10/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a10",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllFlights",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllFlightInformations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllPassengers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllBookingInformations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAllUserInformations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchFlightsAscending",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flights/f3/526799/02:16/2023-09-11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flights",
+						"f3",
+						"526799",
+						"02:16",
+						"2023-09-11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchFlightNumbers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/a8/526483",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"a8",
+						"526483"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

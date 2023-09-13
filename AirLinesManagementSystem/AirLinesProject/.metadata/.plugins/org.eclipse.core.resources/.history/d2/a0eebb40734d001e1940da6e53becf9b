@@ -1,0 +1,13 @@
+package com.india.airLines.services;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.india.airLines.dto.FlightsDTO;
+
+public interface FlightsServices 
+{
+	List<FlightsDTO> searchFlights(String currentLocation, String destination, LocalDate flightDate, LocalTime flightTime);
+	List<FlightsDTO> searchFlight(String airLinesName, int flightNumber, String flightDate, LocalTime flightTime);
+	List<FlightsDTO> searchFlightsAscending(int flightNumber, String flightTime, String flightDate);
+}

@@ -1,0 +1,241 @@
+package com.india.airLines.controller;
+
+import static com.india.airLines.service.StaticScannerAndPrint.*;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.india.airLines.dto.AirLinesDTO;
+import com.india.airLines.dto.BookingInformationDTO;
+import com.india.airLines.dto.FareDTO;
+import com.india.airLines.dto.FlightInformationDTO;
+import com.india.airLines.dto.FlightsDTO;
+import com.india.airLines.dto.InventoryDTO;
+import com.india.airLines.dto.PassengersDTO;
+import com.india.airLines.dto.UserInformationDTO;
+
+import com.india.airLines.services.AdminServices;
+
+@RestController
+@RequestMapping("/admin")
+public class AdminController 
+{
+	@Autowired
+	private AdminServices adminServices;
+	@PostMapping("/a1")
+	public ResponseEntity<String> addFare(@RequestBody FareDTO fareDTO)
+	{
+		println(fareDTO);
+		int fareId = adminServices.addFare(fareDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Fare Id is : "+fareId);
+	}
+	@PostMapping("/a2")
+	public ResponseEntity<String> addAirLines(@RequestBody AirLinesDTO airLinesDTO)
+	{
+		println(airLinesDTO);
+		int airLinesId = adminServices.addAirLines(airLinesDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body("AirLines Id is : "+airLinesId);
+	}
+	@PostMapping("/a3/{airLinesId}")
+	public ResponseEntity<String> addFlightInformation(@RequestBody FlightInformationDTO flightInformationDTO, @PathVariable("airLinesId") int airLinesId)
+	{
+		println(flightInformationDTO);
+		int flightInformationId = adminServices.addFlightInformation(flightInformationDTO, airLinesId);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Flight Information Id is : "+flightInformationId);
+	}
+	@PostMapping("/a4")
+	public ResponseEntity<String> addInventory(@RequestBody InventoryDTO inventoryDTO)
+	{
+		println(inventoryDTO);
+		int inventoryId = adminServices.addInventory(inventoryDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Inventory Id is : "+inventoryId);
+	}
+	@PostMapping("/a5/{fareId}/{flightInformationId}/{inventoryId}")
+	public ResponseEntity<String> addFlight(@RequestBody FlightsDTO flightsDTO, @PathVariable("fareId") int fareId, @PathVariable("flightInformationId") int flightInformationId, @PathVariable("inventoryId") int inventoryId)
+	{
+		println(flightsDTO);
+		int flightsId = adminServices.addFlight(flightsDTO, fareId, flightInformationId, inventoryId);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Flight Id is : "+flightsId);
+	}
+	@PostMapping("/a6")
+	public ResponseEntity<String> addFlights(@RequestBody FlightsDTO flightsDTO)
+	{
+		println(flightsDTO);
+		int flightsId = adminServices.addFlights(flightsDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Flight Id is : "+flightsId);
+	}
+	@GetMapping("/a7/{flightsId}")
+	public ResponseEntity<FlightsDTO> getFlights(@PathVariable("flightsId") int flightsId)
+	{
+		FlightsDTO flightsDTO = adminServices.getFlights(flightsId);
+		if (flightsDTO != null) 
+		{
+			println(flightsId);
+			println(flightsDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightsDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a8/{flightNumber}")
+	public ResponseEntity<List<FlightsDTO>> searchFlightNumbers(@PathVariable("flightNumber") int flightNumber)
+	{
+		List<FlightsDTO> flightsDTO = adminServices.searchFlightNumbers(flightNumber);
+		if (flightsDTO.size() > 0) 
+		{
+			println(flightsDTO);
+			return ResponseEntity.status(HttpStatus.FOUND).body(flightsDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+	}
+	@GetMapping("/a9")
+	public ResponseEntity<List<FlightsDTO>> findAllFlights()
+	{
+		List<FlightsDTO> flightsDTO = adminServices.findAllFlights();
+		if (flightsDTO != null) 
+		{
+			println(flightsDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightsDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a10/{flightInformationId}")
+	public ResponseEntity<FlightInformationDTO> getFlightInformation(@PathVariable("flightInformationId") int flightInformationId)
+	{
+		FlightInformationDTO flightInformationDTO = adminServices.getFlightInformation(flightInformationId);
+		if (flightInformationDTO != null) 
+		{
+			println(flightInformationId);
+			println(flightInformationDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightInformationDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a11")
+	public ResponseEntity<List<FlightInformationDTO>> findAllFlightInformation()
+	{
+		List<FlightInformationDTO> flightInformationDTO = adminServices.findAllFlightInformation();
+		if (flightInformationDTO != null) 
+		{
+			println(flightInformationDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightInformationDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a12")
+	public ResponseEntity<List<UserInformationDTO>> findAllUsers()
+	{
+		List<UserInformationDTO> userInformationDTO = adminServices.findAllUsers();
+		if (userInformationDTO != null) 
+		{
+			println(userInformationDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(userInformationDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a12")
+	public ResponseEntity<List<PassengersDTO>> findAllPassengers()
+	{
+		List<PassengersDTO> passengersDTO = adminServices.findAllPassengers();
+		if (passengersDTO != null) 
+		{
+			println(passengersDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(passengersDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@GetMapping("/a13")
+	public ResponseEntity<List<BookingInformationDTO>> findAllBookingDetails()
+	{
+		List<BookingInformationDTO> bookingInformationDTO = adminServices.findAllBookingDetails();
+		if (bookingInformationDTO != null) 
+		{
+			println(bookingInformationDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(bookingInformationDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@PutMapping("/a15/{airLinesId}/{flightInformationId}/{airLinesName}")
+	public ResponseEntity<List<FlightInformationDTO>> updateAirLinesName(@PathVariable("airLinesId") int airLinesId, @PathVariable("flightInformationId") int flightInformationId, @PathVariable("airLinesName") String airLinesName)
+	{
+		List<FlightInformationDTO> flightInformationDTO = adminServices.updateAirLinesName(airLinesId, flightInformationId, airLinesName);
+		println(flightInformationDTO);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightInformationDTO);
+	}
+	@PutMapping("/a16/{flightsId}/{flightNumber}")
+	public ResponseEntity<FlightsDTO> updateFlightNumber(@PathVariable("flightsId") int flightsId, @PathVariable("flightNumber") int flightNumber)
+	{
+		FlightsDTO flightsDTO = adminServices.updateFlightNumber(flightsId, flightNumber);
+		if (flightsDTO != null) 
+		{
+			println(flightsDTO);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(flightsDTO);
+		}
+		else
+		{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	@DeleteMapping("/a17/{flightsId}")
+	public ResponseEntity<String> deleteAirLines(@PathVariable("flightsId") int flightsId)
+	{
+		int flightsId1 = adminServices.deleteAirLines(flightsId);
+		println(flightsId1);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("AirLines Id is : "+flightsId1);
+	}
+	@DeleteMapping("/a18/{flightsId}")
+	public ResponseEntity<String> deleteFlights(@PathVariable("flightsId") int flightsId)
+	{
+		int flightsId1 = adminServices.deleteFlights(flightsId);
+		println(flightsId1);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Flight Id is : "+flightsId1);
+	}
+	@DeleteMapping("/a19/{userInformationId}")
+	public ResponseEntity<String> deleteUserInformation(@PathVariable("userInformationId") int userInformationId)
+	{
+		int userInformationId1 = adminServices.deleteUserInformation(userInformationId);
+		println(userInformationId1);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("User Information Id is : "+userInformationId1);
+	}
+	@DeleteMapping("/a20/{passengersId}")
+	public ResponseEntity<String> deletePassengers(@PathVariable("passengersId") int passengersId)
+	{
+		int passengersId1 = adminServices.deletePassengers(passengersId);
+		println(passengersId1);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Passengers Id is : "+passengersId1);
+	}
+}

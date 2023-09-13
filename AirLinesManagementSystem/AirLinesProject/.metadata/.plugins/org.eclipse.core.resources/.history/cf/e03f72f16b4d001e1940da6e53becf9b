@@ -1,0 +1,144 @@
+package com.india.airLines.services;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.india.airLines.service.StaticScannerAndPrint.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.india.airLines.dto.AirLinesDTO;
+import com.india.airLines.dto.FareDTO;
+import com.india.airLines.dto.FlightInformationDTO;
+import com.india.airLines.dto.FlightsDTO;
+import com.india.airLines.dto.InventoryDTO;
+
+import com.india.airLines.entity.Flights;
+
+import com.india.airLines.repository.FlightsRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class FlightsServicesImplementation implements FlightsServices
+{
+	@Autowired
+	private FlightsRepository flightsRepository;
+	@Override
+	public List<FlightsDTO> searchFlights(String currentLocation, String destination, String flightDate, String flightTime) 
+	{
+		List<Flights> flights = flightsRepository.searchFlights(currentLocation, destination, flightDate, flightTime);
+		if (flights != null) 
+		{
+			List<FlightsDTO> flightsDTO = flights.stream().map(t -> FlightsDTO.builder()
+					.destination(t.getDestination())
+					.flightDate(t.getFlightDate())
+					.flightTime(t.getFlightTime())
+					.flightNumber(t.getFlightNumber())
+					.currentLocation(t.getCurrentLocation())
+					.fareDTO(FareDTO.builder()
+							.currency(t.getFare().getCurrency())
+							.amount(t.getFare().getAmount())
+							.build())
+					.flightInformationDTO(FlightInformationDTO.builder()
+							.flightNumber(t.getFlightInformation().getFlightNumber())
+							.flightType(t.getFlightInformation().getFlightType())
+							.airLinesDTO(AirLinesDTO.builder()
+									.airLinesName(t.getFlightInformation().getAirLines().getAirLinesName())
+									.build())
+							.build())
+					.inventoryDTO(InventoryDTO.builder()
+							.count(t.getInventory().getCount())
+							.build())
+					.build()).collect(Collectors.toList());
+			println(flightsDTO);
+			return flightsDTO;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	@Override
+	public List<FlightsDTO> searchFlight(String airLinesName, int flightNumber, String flightDate, String flightTime) 
+	{
+		List<Flights> flights = flightsRepository.searchflight(airLinesName, flightNumber, flightDate, flightTime);
+		if (flights != null) 
+		{
+			List<FlightsDTO> flightsDTO = flights.stream().map(t -> FlightsDTO.builder()
+					.flightInformationDTO(FlightInformationDTO.builder()
+							.airLinesDTO(AirLinesDTO.builder()
+									.airLinesName(t.getFlightInformation().getAirLines().getAirLinesName())
+									.build())
+							.flightNumber(t.getFlightInformation().getFlightNumber())
+							.flightType(t.getFlightInformation().getFlightType())
+							.build())
+					.destination(t.getDestination())
+					.flightDate(t.getFlightDate())
+					.flightTime(t.getFlightTime())
+					.flightNumber(t.getFlightNumber())
+					.currentLocation(t.getCurrentLocation())
+					.fareDTO(FareDTO.builder()
+							.currency(t.getFare().getCurrency())
+							.amount(t.getFare().getAmount())
+							.build())
+					.inventoryDTO(InventoryDTO.builder()
+							.count(t.getInventory().getCount())
+							.build())
+					.build()).collect(Collectors.toList());
+			println(flightsDTO);
+			return flightsDTO;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	@Override
+	public List<FlightsDTO> searchFlightsAscending(int flightNumber, String flightTime, String flightDate) 
+	{
+		List<Flights> flights = flightsRepository.searchFlightsAscending(flightNumber, flightTime, flightDate);
+		if (flights != null)
+		{
+			List<FlightsDTO> flightsDTO = flights.stream().map(t -> FlightsDTO.builder()
+					.destination(t.getDestination())
+					.flightDate(t.getFlightDate())
+					.flightTime(t.getFlightTime())
+					.flightNumber(t.getFlightNumber())
+					.currentLocation(t.getCurrentLocation())
+					.fareDTO(FareDTO.builder()
+							.currency(t.getFare().getCurrency())
+							.amount(t.getFare().getAmount())
+							.build())
+					.flightInformationDTO(FlightInformationDTO.builder()
+							.flightNumber(t.getFlightInformation().getFlightNumber())
+							.flightType(t.getFlightInformation().getFlightType())
+							.airLinesDTO(AirLinesDTO.builder()
+									.airLinesName(t.getFlightInformation().getAirLines().getAirLinesName())
+									.build())
+							.build())
+					.inventoryDTO(InventoryDTO.builder()
+							.count(t.getInventory().getCount())
+							.build())
+					.build()).collect(Collectors.toList());
+			println(flightsDTO);
+			List<FlightsDTO> flightsDTO2 = flightsDTO.stream().sorted(Comparator
+					.comparingDouble(flightDTO3 -> flightDTO3.getFareDTO().getAmount())).toList();
+			println(flightsDTO2);
+			return flightsDTO2;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	@Override
+	public List<FlightsDTO> searchFlightNumbers(int flightNumber) 
+	{
+		log.
+		return null;
+	}
+}
